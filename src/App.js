@@ -37,7 +37,7 @@ class App extends Component {
 				<sbb-timetable-search></sbb-timetable-search>
 				<sbb-timetable-results></sbb-timetable-results>
 				<sbb-homepage-main-teaser></sbb-homepage-main-teaser>
-				<sbb-footer language='de' uselinks='false' ref={this.footerRef}>test</sbb-footer>
+				<sbb-footer language='de' uselinks='false' ref={this.footerRef}></sbb-footer>
 			</div>
 		);
 	}
