@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DateTime from './Components/DateTime/DateTime';
 
 class App extends Component {
 
@@ -7,27 +6,30 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			date: ''
+			language: 'de'
 		};
+
+		this.handleLangSwitch = this.handleLangSwitch.bind(this);
+		this.footerRef = React.createRef();
 	}
 
 	componentDidMount() {
-		this.setState({
-			date: '1970-03-10T00:00:00.000Z'
-		});
+		this.footerRef.current.addEventListener('sbb-footer.language-switch', this.handleLangSwitch);
 	}
 
-	update = () => {
+	componentWillUnmount() {
+		this.footerRef.current.removeEventListener('sbb-footer.language-switch', this.handleLangSwitch);
+	}
+
+	handleLangSwitch(evt) {
 		this.setState({
-			date: new Date()
+			language: evt.detail.language
 		});
 	}
 
 	render() {
 		return (
 			<div>
-				<DateTime date={this.state.date} />
-				<button onClick={this.update.bind(this)}>update</button>
 				<sbb-webfonts
 					config='[
 					{
@@ -64,11 +66,11 @@ class App extends Component {
 					}
 					]'
 				></sbb-webfonts>
-				<sbb-header items='{"de": [{ "title": "Fahrplan", "link": "#"}, { "title": "Abos & Billete", "link": "#"}, { "title": "Bahnhof & Services", "link": "#"}, { "title": "Geschäftskunden", "link": "#"}, { "title": "Freizeit & Ferien", "link": "#"}], "fr": [{ "title": "Horaire", "link": "#"}, { "title": "Abonnements et billets", "link": "#"}, { "title": "Gare et servicesa", "link": "#"}, { "title": "Clientèle commerciale", "link": "#"}, { "title": "Loisirs et vacances", "link": "#"}], "en": [{ "title": "Timetable", "link": "#"}, { "title": "Travelcards & tickets", "link": "#"}, { "title": "Station & services", "link": "#"}, { "title": "Business customers", "link": "#"}, { "title": "Leisure & holidays", "link": "#"}], "it": [{ "title": "Orario", "link": "#"}, { "title": "Abonamenti e biglietti", "link": "#"}, { "title": "Stazione e servizi", "link": "#"}, { "title": "Clientela aziendale", "link": "#"}, { "title": "Tempo libero e vacanze", "link": "#"}]}'></sbb-header>
+				<sbb-header language={this.state.language} items='{"de": [{ "title": "Fahrplan", "link": "#"}, { "title": "Abos & Billete", "link": "#"}, { "title": "Bahnhof & Services", "link": "#"}, { "title": "Geschäftskunden", "link": "#"}, { "title": "Freizeit & Ferien", "link": "#"}], "fr": [{ "title": "Horaire", "link": "#"}, { "title": "Abonnements et billets", "link": "#"}, { "title": "Gare et servicesa", "link": "#"}, { "title": "Clientèle commerciale", "link": "#"}, { "title": "Loisirs et vacances", "link": "#"}], "en": [{ "title": "Timetable", "link": "#"}, { "title": "Travelcards & tickets", "link": "#"}, { "title": "Station & services", "link": "#"}, { "title": "Business customers", "link": "#"}, { "title": "Leisure & holidays", "link": "#"}], "it": [{ "title": "Orario", "link": "#"}, { "title": "Abonamenti e biglietti", "link": "#"}, { "title": "Stazione e servizi", "link": "#"}, { "title": "Clientela aziendale", "link": "#"}, { "title": "Tempo libero e vacanze", "link": "#"}]}'></sbb-header>
 				<sbb-timetable-search></sbb-timetable-search>
 				<sbb-timetable-results></sbb-timetable-results>
 				<sbb-homepage-main-teaser></sbb-homepage-main-teaser>
-				<sbb-footer>test</sbb-footer>
+				<sbb-footer ref={this.footerRef}>test</sbb-footer>
 			</div>
 		);
 	}
