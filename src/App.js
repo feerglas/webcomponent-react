@@ -14,17 +14,19 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.footerRef.current.addEventListener('sbb-footer.language-switch', this.handleLangSwitch);
+		this.footerRef.current.addEventListener('sbb-footer.language_switch', this.handleLangSwitch);
 	}
 
 	componentWillUnmount() {
-		this.footerRef.current.removeEventListener('sbb-footer.language-switch', this.handleLangSwitch);
+		this.footerRef.current.removeEventListener('sbb-footer.language_switch', this.handleLangSwitch);
 	}
 
 	handleLangSwitch(evt) {
 		this.setState({
 			language: evt.detail.language
 		});
+
+		window.scrollTo(0, 0);
 	}
 
 	render() {
@@ -70,7 +72,7 @@ class App extends Component {
 				<sbb-timetable-search></sbb-timetable-search>
 				<sbb-timetable-results></sbb-timetable-results>
 				<sbb-homepage-main-teaser></sbb-homepage-main-teaser>
-				<sbb-footer ref={this.footerRef}>test</sbb-footer>
+				<sbb-footer uselinks='false' ref={this.footerRef}>test</sbb-footer>
 			</div>
 		);
 	}
