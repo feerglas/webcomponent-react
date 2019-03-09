@@ -8,7 +8,8 @@
     "time-elements": "^2.0.0"
   },
   "dependencies": {
-    "react-scripts": "2.1.5",
+    "@stauffacher/sbbpoc": "^1.0.0",
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

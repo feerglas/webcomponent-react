@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DateTime from './Components/DateTime/DateTime';
+import '@stauffacher/sbbpoc';
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
 			<div>
 				<DateTime date={this.state.date} />
 				<button onClick={this.update.bind(this)}>update</button>
+				<sbb-footer>test</sbb-footer>
 			</div>
 		);
 	}
