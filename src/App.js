@@ -5,7 +5,7 @@ import image3 from './homepage_crosslinks/3.jpg';
 import image4 from './homepage_crosslinks/4.jpg';
 import image5 from './homepage_crosslinks/5.jpg';
 import image6 from './homepage_crosslinks/6.jpg';
-console.log(image1);
+
 class App extends Component {
 
 	constructor(props) {
@@ -17,6 +17,8 @@ class App extends Component {
 
 		this.handleLangSwitch = this.handleLangSwitch.bind(this);
 		this.footerRef = React.createRef();
+
+		this.deeplinkItems = `[ { "image": "${image1}", "title": "Günstig in der 1. Klasse nach Paris.", "text": "Reisen Sie direkt und bequem mitten ins Herz von Paris und lassen Sie sich an den Ufern der Seine verzaubern. Nicht verpassen: Noch bis zum 7. April sparen Sie dabei 30 Franken in der 1. Klasse!", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image2}", "title": "SwissPass - Ihr Schlüssel für Mobilität und Freizeit.", "text": "Rauf auf die Piste, rein ins Schneevergnügen. Laden Sie Ihren Skipass ganz einfach auf den SwissPass.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image3}", "title": "Per WhatsApp noch schneller informiert.", "text": "Abonnieren Sie jetzt SBB WhatsApp und wir senden Ihnen regelmässig besonders günstige Angebote und Reisetipps für die Schweiz und unsere Nachbarländer.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image4}", "title": "Spass im Schnee mit Snow’n’Rail.", "text": "Winterfreunde aufgepasst: Vom 1. März bis Saisonende sparen Sie beim Onlinekauf 20% auf die Reise mit dem ÖV in zahlreiche beliebte Skigebiete.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image5}", "title": "Setzen Sie sich an die Spitze des Zuges.", "text": "Sie wollen Verantwortung übernehmen und Grosses bewegen? Informieren Sie sich jetzt über die bezahlte Zweitausbildung zur Lokführerin oder zum Lokführer.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image6}", "title": "Gepäcklos unbeschwert in die Winterferien.", "text": "So einfach geht’s: Wir holen Ihr Gepäck bei Ihnen zuhause ab und liefern es direkt in Ihre Ferienunterkunft. Für ausgewählte Wintersportorte jetzt zu attraktiven Pauschalpreisen.", "link": { "title": "Mehr info", "link": "#"} } ]`;
 	}
 
 	componentDidMount() {
@@ -36,8 +38,6 @@ class App extends Component {
 	}
 
 	render() {
-		const deeplinkItems = `[ { "image": "${image1}", "title": "Günstig in der 1. Klasse nach Paris.", "text": "Reisen Sie direkt und bequem mitten ins Herz von Paris und lassen Sie sich an den Ufern der Seine verzaubern. Nicht verpassen: Noch bis zum 7. April sparen Sie dabei 30 Franken in der 1. Klasse!", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image2}", "title": "SwissPass - Ihr Schlüssel für Mobilität und Freizeit.", "text": "Rauf auf die Piste, rein ins Schneevergnügen. Laden Sie Ihren Skipass ganz einfach auf den SwissPass.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image3}", "title": "Per WhatsApp noch schneller informiert.", "text": "Abonnieren Sie jetzt SBB WhatsApp und wir senden Ihnen regelmässig besonders günstige Angebote und Reisetipps für die Schweiz und unsere Nachbarländer.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image4}", "title": "Spass im Schnee mit Snow’n’Rail.", "text": "Winterfreunde aufgepasst: Vom 1. März bis Saisonende sparen Sie beim Onlinekauf 20% auf die Reise mit dem ÖV in zahlreiche beliebte Skigebiete.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image5}", "title": "Setzen Sie sich an die Spitze des Zuges.", "text": "Sie wollen Verantwortung übernehmen und Grosses bewegen? Informieren Sie sich jetzt über die bezahlte Zweitausbildung zur Lokführerin oder zum Lokführer.", "link": { "title": "Mehr info", "link": "#"} }, { "image": "${image6}", "title": "Gepäcklos unbeschwert in die Winterferien.", "text": "So einfach geht’s: Wir holen Ihr Gepäck bei Ihnen zuhause ab und liefern es direkt in Ihre Ferienunterkunft. Für ausgewählte Wintersportorte jetzt zu attraktiven Pauschalpreisen.", "link": { "title": "Mehr info", "link": "#"} } ]`;
-
 		return (
 			<div>
 				<sbb-global-styles></sbb-global-styles>
@@ -51,7 +51,7 @@ class App extends Component {
 
 				<sbb-deeplink-teasers
 					titles-level='3'
-					items={deeplinkItems}
+					items={this.deeplinkItems}
 				>
 				</sbb-deeplink-teasers>
 
