@@ -23,11 +23,11 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.footerRef.current.addEventListener('sbb-footer_language-switch', this.handleLangSwitch);
+		this.footerRef.current.addEventListener('sbb-language-selector_language-switch', this.handleLangSwitch);
 	}
 
 	componentWillUnmount() {
-		this.footerRef.current.removeEventListener('sbb-footer_language-switch', this.handleLangSwitch);
+		this.footerRef.current.removeEventListener('sbb-language-selector_language-switch', this.handleLangSwitch);
 	}
 
 	handleLangSwitch(evt) {
@@ -132,7 +132,7 @@ class App extends Component {
 						</sbb-footer-column>
 					</sbb-footer-columns>
 
-					<sbb-language-selector language='de' uselinks='false' ref={this.footerRef}></sbb-language-selector>
+					<sbb-language-selector language='de' ref={this.footerRef}></sbb-language-selector>
 				</sbb-footer>
 
 			</div>
