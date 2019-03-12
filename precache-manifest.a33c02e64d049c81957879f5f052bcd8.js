@@ -368,7 +368,7 @@ self.__precacheManifest = [
     "url": "/webcomponent-react/static/js/10.a6c6cd80.chunk.js"
   },
   {
-    "revision": "c4c7de950da6e0af2acd86ad5c8cbbcb",
+    "revision": "01669af1e27af47fc73a50b29abcb42c",
     "url": "/webcomponent-react/index.html"
   }
 ];
