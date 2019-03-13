@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{61:function(e,n,t){"use strict";t.r(n),t.d(n,"SbbTableCaption",function(){return o});var r=t(10),o=function(){function e(){}return e.prototype.render=function(){return Object(r.b)("div",{id:"table"},Object(r.b)("slot",null))},Object.defineProperty(e,"is",{get:function(){return"sbb-table-caption"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return""},enumerable:!0,configurable:!0}),e}()}}]);
-//# sourceMappingURL=6.73ae3e03.chunk.js.map
