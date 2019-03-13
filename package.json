@@ -8,7 +8,7 @@
     "react-dom": "^16.8.4"
   },
   "dependencies": {
-    "@stauffacher/sbbpoc": "^2.1.0",
+    "@stauffacher/sbbpoc": "^2.2.0",
     "axios": "^0.18.0",
     "react-scripts": "2.1.5"
   },

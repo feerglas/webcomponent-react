@@ -162,12 +162,16 @@ class TimetableSearch extends Component {
 					suggestions={this.state.autocomplete.origin}
 					ref={this.searchOriginRef}
 					slot='origin'
+					label='Von'
+					placeholder='Von'
 				></sbb-autocomplete>
 				<sbb-autocomplete
 					name='destination'
 					suggestions={this.state.autocomplete.destination}
 					ref={this.searchDestinationRef}
 					slot='destination'
+					label='Nach'
+					placeholder='Nach'
 				></sbb-autocomplete>
 			</sbb-timetable-search>
 		);
