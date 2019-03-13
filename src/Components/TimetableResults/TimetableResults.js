@@ -7,8 +7,6 @@ class TimetableResults extends Component {
 			return null;
 		}
 
-		console.log(this.props.results);
-
 		return (
 			<sbb-timetable-results>
 				{this.props.results.map((result, index) => {

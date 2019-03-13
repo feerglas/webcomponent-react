@@ -38,12 +38,12 @@ class App extends Component {
 		window.scrollTo(0, 0);
 	}
 
-	handleSearch(search) {
+	handleSearch(from, to) {
 
 		this.cancelRequest && this.cancelRequest();
 
 		axios
-			.get(`http://global-warmer.com/from/${search.origin.uic}/to/${search.destination.uic}`, {
+			.get(`http://global-warmer.com/from/${from}/to/${to}`, {
 				cancelToken: this.CancelToken(function executor (c) {
 					this.cancelRequest = c;
 				}.bind(this))

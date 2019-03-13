@@ -7,29 +7,93 @@ class TimetableSearch extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleTimetableSearch = this.handleTimetableSearch.bind(this);
-		this.timetableSearchRef = React.createRef();
-		this.search = {
+		this.didSelectFromAutocomplete = {};
+
+		// bind methods
+		this.handleBlur = this.handleBlur.bind(this);
+		this.handleInput = this.handleInput.bind(this);
+		this.handleSelection = this.handleSelection.bind(this);
+
+		// refs
+		this.searchOriginRef = React.createRef();
+		this.searchDestinationRef = React.createRef();
+
+		// axios
+		this.CancelToken = axios.CancelToken;
+
+		// autocomplete defaults
+		const autocompleteDefaultSations = [
+			{
+				label: 'Bern',
+				id: 8507000
+			},
+			{
+				label: 'Zürich HB',
+				id: 8503000
+			},
+			{
+				label: 'Fribourg',
+				id: 178
+			},
+			{
+				label: 'Basel',
+				id: 22
+			},
+			{
+				label: 'Genève',
+				id: 8501008
+			}
+		];
+
+		// initial state
+		this.state = {
+			autocomplete: {
+				origin: JSON.stringify(autocompleteDefaultSations),
+				destination: JSON.stringify(autocompleteDefaultSations)
+			},
 			origin: {},
 			destination: {}
 		};
 
-		this.CancelToken = axios.CancelToken;
 	}
 
 	componentDidMount() {
-		this.timetableSearchRef.current.addEventListener('sbb-timetable-search_change', this.handleTimetableSearch);
+		this.searchOriginRef.current.addEventListener('sbb-autocomplete_blur', this.handleBlur);
+		this.searchOriginRef.current.addEventListener('sbb-autocomplete_input', this.handleInput);
+		this.searchOriginRef.current.addEventListener('sbb-autocomplete_selection', this.handleSelection);
+		this.searchDestinationRef.current.addEventListener('sbb-autocomplete_blur', this.handleBlur);
+		this.searchDestinationRef.current.addEventListener('sbb-autocomplete_input', this.handleInput);
+		this.searchDestinationRef.current.addEventListener('sbb-autocomplete_selection', this.handleSelection);
 	}
 
 	componentWillUnmount() {
-		this.timetableSearchRef.current.removeEventListener('sbb-timetable-search_change', this.handleTimetableSearch);
+		this.searchOriginRef.current.removeEventListener('sbb-autocomplete_blur', this.handleBlur);
+		this.searchOriginRef.current.removeEventListener('sbb-autocomplete_input', this.handleInput);
+		this.searchOriginRef.current.removeEventListener('sbb-autocomplete_selection', this.handleSelection);
+		this.searchDestinationRef.current.removeEventListener('sbb-autocomplete_blur', this.handleBlur);
+		this.searchDestinationRef.current.removeEventListener('sbb-autocomplete_input', this.handleInput);
+		this.searchDestinationRef.current.removeEventListener('sbb-autocomplete_selection', this.handleSelection);
 	}
 
-	handleTimetableSearch(evt) {
-		const type = evt.detail.type;
-		const value = evt.detail.value;
+	handleBlur(evt) {
+
+		const type = evt.target.name;
+
+		if (this.didSelectFromAutocomplete[type]) {
+			return;
+		}
+
+		evt.target.value = JSON.parse(this.state.autocomplete[type])[0].label;
+
+	}
+
+	handleInput(evt) {
+		const type = evt.target.name;
+		const value = evt.detail.input;
 		const cancelTokenKey = `${type}CancelToken`;
 		const cancelToken = this[cancelTokenKey];
+
+		this.didSelectFromAutocomplete[type] = false;
 
 		if (value.length < 1) {
 			return;
@@ -47,25 +111,65 @@ class TimetableSearch extends Component {
 				const locations = res.data.locations;
 
 				if (locations && locations.length > 0) {
-					this.validateSearch(type, locations[0]);
+					const suggestions = locations.map(location => ({
+						label: location.name,
+						id: location.uic
+					}));
+
+					const newState = this.state;
+
+					newState.autocomplete[type] = JSON.stringify(suggestions);
+					newState[type] = suggestions[0];
+
+					this.setState(newState);
+					this.validateSearch();
 				}
 			}).catch((err) => {
 				console.log('Error requesting Stations: ', err);
 			});
-
 	}
 
-	validateSearch(type, location) {
-		this.search[type] = location;
+	handleSelection(evt) {
+		const type = evt.target.name;
+		const selection = evt.detail.selection;
+		const newState = this.state;
 
-		if (this.search['origin'].uic && this.search['destination'].uic) {
-			this.props.searchCallback(this.search);
+		this.didSelectFromAutocomplete[type] = true;
+
+		newState[type] = selection;
+
+		this.setState(newState);
+
+		this.validateSearch();
+	}
+
+	validateSearch() {
+		const from = this.state.origin.id;
+		const to = this.state.destination.id;
+
+		if (!from || !to) {
+			return;
 		}
+
+		this.props.searchCallback(from, to);
 	}
 
 	render() {
 		return (
-			<sbb-timetable-search ref={this.timetableSearchRef}></sbb-timetable-search>
+			<sbb-timetable-search>
+				<sbb-autocomplete
+					name='origin'
+					suggestions={this.state.autocomplete.origin}
+					ref={this.searchOriginRef}
+					slot='origin'
+				></sbb-autocomplete>
+				<sbb-autocomplete
+					name='destination'
+					suggestions={this.state.autocomplete.destination}
+					ref={this.searchDestinationRef}
+					slot='destination'
+				></sbb-autocomplete>
+			</sbb-timetable-search>
 		);
 	}
 }
