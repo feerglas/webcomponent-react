@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/webcomponent-react/static/js/48.ff9e7bdd.chunk.js"
   },
   {
-    "revision": "dee08c75c2c96c9f5d6e",
-    "url": "/webcomponent-react/static/js/main.dee08c75.chunk.js"
+    "revision": "7847b55f96163e57c817",
+    "url": "/webcomponent-react/static/js/main.7847b55f.chunk.js"
   },
   {
     "revision": "99ddc679e571bb798403add6a008be52",
@@ -384,7 +384,7 @@ self.__precacheManifest = [
     "url": "/webcomponent-react/static/js/10.0026853c.chunk.js"
   },
   {
-    "revision": "c015169d60f67958931bfb12d0225b72",
+    "revision": "a4e21dd619b8ffe575f74993ac7181d0",
     "url": "/webcomponent-react/index.html"
   }
 ];
