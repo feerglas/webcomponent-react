@@ -102,7 +102,7 @@ class TimetableSearch extends Component {
 		cancelToken && cancelToken();
 
 		axios
-			.get(`http://global-warmer.com/station-search/${value}`, {
+			.get(`https://global-warmer.com/sbb/station-search/${value}`, {
 				cancelToken: new this.CancelToken((cancelToken) => {
 					this[cancelTokenKey] = cancelToken;
 				})
@@ -144,10 +144,10 @@ class TimetableSearch extends Component {
 	}
 
 	validateSearch() {
-		const from = this.state.origin.id;
-		const to = this.state.destination.id;
+		const from = this.state.origin;
+		const to = this.state.destination;
 
-		if (!from || !to) {
+		if (!from.id || !to.id) {
 			return;
 		}
 

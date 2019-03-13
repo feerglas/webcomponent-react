@@ -12,7 +12,11 @@ class App extends Component {
 
 		this.state = {
 			language: 'de',
-			results: []
+			results: [],
+			title: {
+				from: '',
+				to: ''
+			}
 		};
 
 		this.handleLangSwitch = this.handleLangSwitch.bind(this);
@@ -43,7 +47,7 @@ class App extends Component {
 		this.cancelRequest && this.cancelRequest();
 
 		axios
-			.get(`http://global-warmer.com/from/${from}/to/${to}`, {
+			.get(`https://global-warmer.com/sbb/from/${from.id}/to/${to.id}`, {
 				cancelToken: this.CancelToken(function executor (c) {
 					this.cancelRequest = c;
 				}.bind(this))
@@ -57,7 +61,11 @@ class App extends Component {
 				const trips = res.data.trips;
 
 				this.setState({
-					results: trips
+					results: trips,
+					title: {
+						from: from.label,
+						to: to.label
+					}
 				});
 			})
 			.catch((err) => {
@@ -73,11 +81,16 @@ class App extends Component {
 
 				<sbb-webfonts></sbb-webfonts>
 
-				<sbb-header language={this.state.language} items={navItems}></sbb-header>
+				<sbb-header role='banner' language={this.state.language} items={navItems}></sbb-header>
 
 				<sbb-pagetitle additional-classes='var_centered' visuallyhidden='true' page-title='Startseite sbb.ch'></sbb-pagetitle>
 
 				<TimetableSearch searchCallback={this.handleSearch.bind(this)} />
+
+				<sbb-timetable-results-title
+					from={this.state.title.from}
+					to={this.state.title.to}
+				></sbb-timetable-results-title>
 
 				<TimetableResults results={this.state.results} />
 
@@ -133,6 +146,7 @@ class App extends Component {
 					</sbb-footer-columns>
 
 					<sbb-language-selector language='de' ref={this.footerRef}></sbb-language-selector>
+					<sbb-footer-links-bottom></sbb-footer-links-bottom>
 				</sbb-footer>
 
 			</div>
