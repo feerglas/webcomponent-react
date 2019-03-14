@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TimetableSearch from './Components/TimetableSearch/TimetableSearch';
 import TimetableResults from './Components/TimetableResults/TimetableResults';
-import Loader from './Components/Loader/Loader'
 import axios from 'axios';
 
 import { navItems, deeplinkItems } from './data/data';
@@ -94,7 +93,7 @@ class App extends Component {
 
 				<TimetableSearch searchCallback={this.handleSearch.bind(this)} />
 
-				<Loader show={this.state.showLoader} />
+				<sbb-loader show={this.state.showLoader}></sbb-loader>
 
 				<sbb-timetable-results-title
 					from={this.state.title.from}
