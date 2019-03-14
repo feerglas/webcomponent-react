@@ -75,6 +75,9 @@ class App extends Component {
 				});
 			})
 			.catch((err) => {
+				this.setState({
+					showLoader: false
+				});
 				console.log('Error requesting Trips: ', err);
 			});
 
