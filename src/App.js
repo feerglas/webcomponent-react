@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimetableSearch from './Components/TimetableSearch/TimetableSearch';
 import TimetableResults from './Components/TimetableResults/TimetableResults';
+import Loader from './Components/Loader/Loader'
 import axios from 'axios';
 
 import { navItems, deeplinkItems } from './data/data';
@@ -16,7 +17,8 @@ class App extends Component {
 			title: {
 				from: '',
 				to: ''
-			}
+			},
+			showLoader: false
 		};
 
 		this.handleLangSwitch = this.handleLangSwitch.bind(this);
@@ -44,6 +46,10 @@ class App extends Component {
 
 	handleSearch(from, to) {
 
+		this.setState({
+			showLoader: true
+		});
+
 		this.cancelRequest && this.cancelRequest();
 
 		axios
@@ -65,7 +71,8 @@ class App extends Component {
 					title: {
 						from: from.label,
 						to: to.label
-					}
+					},
+					showLoader: false
 				});
 			})
 			.catch((err) => {
@@ -86,6 +93,8 @@ class App extends Component {
 				<sbb-pagetitle additional-classes='var_centered' visuallyhidden='true' page-title='Startseite sbb.ch'></sbb-pagetitle>
 
 				<TimetableSearch searchCallback={this.handleSearch.bind(this)} />
+
+				<Loader show={this.state.showLoader} />
 
 				<sbb-timetable-results-title
 					from={this.state.title.from}
