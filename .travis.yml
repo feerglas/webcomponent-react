@@ -7,7 +7,8 @@ before_script:
 deploy:
   skip_cleanup: true
   provider: heroku
-  file: "/build/"
+  file_glob: true
+  file: build/*
   api_key:
     secure: Q9NpcWLxLxuB6urKnpw2NzcidFVFYjTxFNC/C9utgN2BvkZPfksJZb/ilQEi+3fq6sZeWrXtmjJZafYHijn4unXt8QNh91xoSOHHUvOrXGOWEvRlRFk4mPBWGPyXlFVgyEpuaXHfcUzR8mLMAB/wFiyTNQ4AaBsh8pWbtYk4bIed/ZikjmHWq6jx10PmV+xieY9eNNbsjQgvcDB8JzHVUdc81OMsuxgbUGvY484TeNcnhtF+lIZksVAc9lynQF8VqkUinRaZd1HaO3/5gNu8WI/vcgBvCBjPJR/2A74aCPfJK7j6NVLcepOfkEhKXJg5BUGoqRw7JaDT95LaZ9ZqFK79hS/+ka9DmE8ueOq5kQ+ycsmXwnK48jbAdaXu2ojQLwv0qLkZ5Mzzh1pXBCIAvP7Fcgqoa1a5htA83ljhXSiYeSgnfvMqJRLKzIwoMVaCLHGUImzykShtJRghax+t1fHCMOqAyRRGZFQcg8V7pnEkJfTpZ0cK/fN0P+5K3ipYAeMQcjxqvGSwVO0NJKemhC1Lp9bP6NAd52P5fBXuPwuex3XLdSFBjcSazLc/LFiSaawBtD4tTWVuZZpBDnCdiX+OrzoSjVBXfeJ98qfBnjg3PKub2FXZ0cOopYuaeiO/jSds78PINPWR3p8sxPLvFCYW3mC0wXDPtdXsCSAMJcg=
   app: webcomponent-react
