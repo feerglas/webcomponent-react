@@ -8,16 +8,14 @@
     "react-dom": "^16.8.4"
   },
   "dependencies": {
-    "@stauffacher/sbbpoc": "^2.3.0",
+    "feerglassbbpoc/sbbpoc": "^1.0.0",
     "axios": "^0.18.0",
     "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
