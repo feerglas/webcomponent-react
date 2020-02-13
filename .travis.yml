@@ -2,9 +2,14 @@ language: node_js
 node_js:
  - "stable"
 
+# travis will automatically install correct node version based on .mwnrc
+# as long as we don't specify an explicit node version here
+
 cache:
   directories:
   - node_modules
+
+# travis does npm install automatically
 
 script:
   - npm run build
