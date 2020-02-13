@@ -14,5 +14,5 @@ script:
 
 deploy:
   provider: heroku:git
-  api_key: travis encrypt $HEROKU_API_KEY
+  api_key: $HEROKU_API_KEY
   edge: true # opt in to dpl v2
