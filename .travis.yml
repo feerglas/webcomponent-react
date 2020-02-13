@@ -13,7 +13,9 @@ script:
   - npm run build
 
 deploy:
-  provider: heroku:git
+  provider: heroku
   api_key:
     secure: "ah1Ck7inBhJsBbzYyMXNqyXl6K0s8ubnYI5+s+0p3ug8MqsG8yWSfCkfV4HxNu9vXvaEXFtGJyw5gToA+/OzNXcNIOV6LodfZO7vt3keqOis14QGN7nJHgzkcEuR0EWylzBFap/aCC557dL46ZIAq54LOIlFiCYkIVwhLlY/hTA4ckbUgvQ93J4TF3Z+sIDpWivqoWt0gsJBczaMAxNqNww6tvY5tqF1Nt3mJp1LH0kwLZof4JY7DYS0+WyrwDT2XuWeFxUfRItreZNLb9+s218Z0CRRx5Uwp8AZlPvMiDqozL9jPa3KR4w/T/MhfYeFgPsQ96ApxNUpLHMcGeVGUP0jMWEeR6DoCXDDm6nTnV7W5Hc5+8M6wK3L9ee3VRGkHV/8KWr/z9a0FOtEU+wkyzsigiBVgU2LRM+qDFKvmHCERI7MgeR6G3pmoBo/cakGryF/xulCC9JwsULsHQsK8hoXF2X2paZRe7d1c7SvuV1uCB7UEbF8MzlogBDAND2sKvtK4L5aJe+DNas/ED5RGo4XRIrMKiuQhl3vSq1nO7HZ/LBU3xSBo9Xs63eERLockq1DJVgUAQNmZczYWGjO3DyuwMblXENQewfkqtc077Ijo6uks99WZlpXuzMbbftaCZBTjgZLTTG39Wba717/W7Vr+IJsSUMhQcuth/LQEQU="
-  edge: true # opt in to dpl v2
+  app: webcomponent-react
+  on:
+    repo: feerglas/webcomponent-react
