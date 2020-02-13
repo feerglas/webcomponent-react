@@ -1,6 +1,4 @@
 language: node_js
-node_js:
- - "node"
 
 # travis will automatically install correct node version based on .mwnrc
 # as long as we don't specify an explicit node version here
