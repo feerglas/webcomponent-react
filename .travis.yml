@@ -11,3 +11,4 @@ deploy:
   app: webcomponent-react
   on:
     repo: feerglas/webcomponent-react
+  strategy: git
