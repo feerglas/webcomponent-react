@@ -4,7 +4,6 @@ cache:
   - node_modules
 before_script:
 - npm run build
-deploy:
-  provider: firebase
-  token:
-    secure: GgSYyh8h9xuu4EovXGfnJPMJ3aMERG02iY410k3yuG+G3yIcDXS/dDdpWdKMBQrQZg12WjmxpypysWNvyzgUW7uUSZWm1ZtbxQ/H69Z0RTNIQ1V50jg884Eh7Z7BT6GLhz7YNmIz96G1er6y3DTg2Tl1kcLkGWv2NtUHWFo1kAFbCDRPdBm7V31dmg8EDEt+8dCb1b0QPrsPDWhSx2wUvdhC797sdvR0qztd6SI3HW2JlMqsDb3G/2fx8nY7aRgkHR1xpzw/VCaSOsb7z8ZEae378++OZvHPFvcSq3Wkla6+Zx8gffjRrn+Alm+1XeqOS1nIgYrOWmEGp6iqJac4e/Oqt76TtsnloLPJVo8XyLa9FjAHcRUWoi1Ik95JCxcS16b6sypY2dxrgokWA0oZJ2Bj8766pKmZGNJ3btgfRDDlzwNEJD3tB5Z3hZZ4t8qSeoJUzUnCsf2ufas3CybB67B6PIT08vrw6VUqXtjVriKcyg0dVtz9bjXPwfbgg7Ja11cSZaPkfsL3elVHiLdrx7zfDf1KSoWe6/leVadTN1QaqWW3/VS/yYbeEq6VLfpxqad4qW79O5W7mia4qdwu4g+bzfDiHrBpRsJnP48w+AaF6txqclmRZy+pGIAmXUvy9vOu2WolvDizeWx2ZMSW0x2ViiOBLrCQSk0omzGEUeg=
+- npm install firebase-tools -g
+script:
+  - firebase deploy --only hosting --token $FIREBASE_TOKEN
