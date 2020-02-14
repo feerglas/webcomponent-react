@@ -10,7 +10,7 @@ This sample App shows how a custom web component can be integrated and used in r
 3. npm install
 4. npm start
 
-# How to generate encrypted Travis API key for deployment
+# How to generate Travis API key for deployment
 
-- Instal Travis
-- run: ```travis encrypt <heroku_api_token> --add deploy.api_key --pro -r githubuser/github-repo-name```
+- Install Firebase cli and login
+- The Firebase Token to use in CI will be printed in the console
