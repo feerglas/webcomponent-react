@@ -5,4 +5,4 @@ cache:
 before_script:
   - npm run build
 script:
-  - "./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN"
+  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
