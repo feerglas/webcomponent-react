@@ -14,3 +14,7 @@ This sample App shows how a custom web component can be integrated and used in r
 
 - Install Firebase cli and login
 - The Firebase Token to use in CI will be printed in the console
+
+# Firebase Hosting
+
+Deployed to: https://webcomp-react.web.app/
