@@ -2,7 +2,9 @@ language: node_js
 cache:
   directories:
   - node_modules
-before_script:
-  - npm run build
 script:
-  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+- npm run build
+deploy:
+  provider: firebase
+  token:
+    secure: AjI4NMx0xat9t9EeXPB6moJgu7wwxlpyybLUl4ZZrkiXt+vfbg1/SNsJBNqQ/FjNVT1GRgnGQ4AuThZ2/7+YfEgmZNwLb3S5CMkje8lXP7OQcgFjVAzo9OQbRxJ2A7ooGsTmqZsZsfLOBaRJSPQufQHvYVfpr4xJLnv7ey0AiaGDleuwavatAMiDYCO6TuWggmE96XGdzrNmZvrn84Yj9X+hcG2QBcqWH83SvAX/+o4uqcLM7oErCHq+Tvkm3h6cnC9pNxK0WXuGnr70Q9bpSDp3uqDmzTGpb1Fe19CFc+9sXk3mDjAgTJGiq+DL32S+D3BJm48GN3KI4jysX8NPTo2Ew2yksl9iTMPfC8uVxQ8MVBRY4Xdsd75M0ZSj2Dl8zJYPoWfTKFXBjNm3EYB0fGmx5eDwwYuoNayGe/BCZ1VsXCs4kYHLx41a8Sls7B6w2N1pB7VN2NOmKQVogLHCakDp6vlivWp/eIKJNi55S0dRL7i3qYzyL5HNTqFdT1fRQm/fuPJ9MsFMCrfoXLmxgWqC/dt38AvGjTkuGUAhLi4ZqXZHE5oySAcZCIKNQP4sTynGnIbwOqqLQWlZfUsHO7102NR1rdEBmmL+lsLFP8Z4/ownNGMTlcId26HBpqdPEAoZa/ZKCnSj8vUBbh4pihlcvvyl1QGzNebiH6lhu1s=
