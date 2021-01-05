@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "feerglassbbpoc": "^1.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "react-scripts": "2.1.5"
   },
   "scripts": {
